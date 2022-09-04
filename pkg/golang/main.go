@@ -20,12 +20,16 @@ func main() {
 
 	ciphertext := encrypt(key, file)
 
+	fmt.Print("encrypt ", fileName, " ", getDuration(start), " nanoseconds\n")
+
 	// _ := decrypt(key, ciphertext)
+	start = time.Now()
 	decrypt(key, ciphertext)
 
-	elapsed := time.Since(start)
+	fmt.Print("decrypt ", fileName, " ", getDuration(start), " nanoseconds\n")
 
-	fmt.Printf("page took %f\n", elapsed.Seconds())
+	// elapsed := time.Since(start)
+
 }
 
 func getFileName() string {
@@ -42,7 +46,7 @@ func encrypt(key *ecies.PrivateKey, file []byte) []byte {
 		panic(err)
 	}
 
-	fmt.Printf("plaintext encrypted: %v\n", ciphertext)
+	// fmt.Printf("plaintext encrypted: %v\n", ciphertext)
 
 	return ciphertext
 }
@@ -52,7 +56,7 @@ func decrypt(key *ecies.PrivateKey, ciphertext []byte) []byte {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("ciphertext decrypted: %s\n", string(plaintext))
+	// fmt.Printf("ciphertext decrypted: %s\n", string(plaintext))
 
 	return plaintext
 }
@@ -63,7 +67,7 @@ func readFile(fileName string) []byte {
 		panic(err)
 	}
 
-	fmt.Println("file bytes ", file)
+	// fmt.Println("file bytes ", file)
 
 	return file
 
@@ -75,7 +79,11 @@ func generateKey() *ecies.PrivateKey {
 		panic(err)
 	}
 
-	fmt.Println("key pair has been generated")
+	// fmt.Println("key pair has been generated")
 
 	return k
+}
+
+func getDuration(s time.Time) int64 {
+	return time.Since(s).Nanoseconds()
 }
