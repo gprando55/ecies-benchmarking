@@ -1,0 +1,2 @@
+encrypt 100kb 48170789 nanoseconds
+decrypt 100kb 22977427 nanoseconds

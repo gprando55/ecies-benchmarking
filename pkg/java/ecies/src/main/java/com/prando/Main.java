@@ -19,13 +19,25 @@ public class Main {
 
             ECKeyPair ecKeyPair = Ecies.generateEcKeyPair();
 
-            System.out.println("fileContent ->> " +  fileContent);
+//            System.out.println("fileContent ->> " +  fileContent);
+
+            long startTime = System.nanoTime();
 
             String encrypted = Ecies.encrypt(ecKeyPair.getPublicHex(true), fileContent);
-            System.out.println("encrypted ->> " +  encrypted);
+            long endTime = System.nanoTime();
 
+            long timeElapsed = endTime - startTime;
+
+            System.out.println("encrypt 10mb "+ timeElapsed + " nanoseconds");
+//
+            startTime = System.nanoTime();
             String decrypted = Ecies.decrypt(ecKeyPair.getPrivateHex(), encrypted);
-            System.out.println("decrypted ->> " + decrypted);
+
+            endTime = System.nanoTime();
+            timeElapsed = endTime - startTime;
+            System.out.println("decrypt 10mb "+ timeElapsed + " nanoseconds");
+//
+//            System.out.println("decrypted ->> " + decrypted);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -35,7 +47,7 @@ public class Main {
     private static InputStream readTestFile()  {
         InputStream stream;
         try {
-            File file = new File("/home/prando/facul/ecies-benchmarking/dataset/1kb.txt");
+            File file = new File("/home/prando/facul/ecies-benchmarking/dataset/10mb.txt");
 
             stream = new FileInputStream(file);
             return stream;
