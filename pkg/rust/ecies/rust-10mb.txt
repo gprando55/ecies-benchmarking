@@ -1,2 +1,2 @@
-encrypt 1kb 253774 nanoseconds
-decrypt 1kb 117726 nanoseconds
+encrypt 10mb 20.73 milliseconds
+decrypt 10mb 11.19 milliseconds
