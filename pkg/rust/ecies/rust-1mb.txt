@@ -1,2 +1,2 @@
-encrypt 1mb 5.99ms milliseconds
-decrypt 1mb 4.07ms milliseconds
+encrypt 1mb 5.99 milliseconds
+decrypt 1mb 4.07 milliseconds
