@@ -1,0 +1,2 @@
+encrypt 1mb 4557.892583012581 milliseconds
+decrypt 1mb 16486.54850000143 milliseconds
